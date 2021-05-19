@@ -1,0 +1,22 @@
+[
+    {
+        "first_name": "Gustavo",
+        "last_name": "Botero",
+        "email": "gustavoadolfob92@gmail.com",
+        "type_document_id": 1,
+        "num_document": 1234567890,
+        "password": "Gustavo123456",
+        "num_phone": 3182016659,
+        "address": "Mz 1 casa 2 el bosque"
+    },
+    {
+        "first_name": "Erica",
+        "last_name": "Rodriguez",
+        "email": "erica-rodriguez@gmail.com",
+        "type_document_id": 1,
+        "num_document": 1123456789,
+        "password": "Erica123456",
+        "num_phone": 3182016695,
+        "address": "Mz 1 casa 2 el bosque"
+    }
+]

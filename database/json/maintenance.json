@@ -1,0 +1,16 @@
+[
+    {
+        "user_id": 2,
+        "reference_id": 1,
+        "type_team_id": 2,
+        "type_maintenance_id": 1,
+        "description": "Limpieza de windows"
+    },
+    {
+        "user_id": 2,
+        "reference_id": 2,
+        "type_team_id": 1,
+        "type_maintenance_id": 2,
+        "description": "Disco duro dañado"
+    }
+]

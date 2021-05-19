@@ -1,0 +1,18 @@
+[
+    {
+        "reference_id": 1,
+        "type_team_id": 2
+    },
+    {
+        "reference_id": 2,
+        "type_team_id": 1
+    },
+    {
+        "reference_id": 6,
+        "type_team_id": 3
+    },
+    {
+        "reference_id": 13,
+        "type_team_id": 4
+    }
+]
