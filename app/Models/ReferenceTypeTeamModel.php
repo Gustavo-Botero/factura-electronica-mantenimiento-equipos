@@ -9,7 +9,7 @@ class ReferenceTypeTeamModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'references_type_team';
+    protected $table = 'reference_type_team';
 
     protected $keyType = 'integer';
 
