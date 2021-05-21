@@ -2,10 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Contracts\Modulos\Reference\ReferenceRepositoryInterface;
+use App\Repositories\Contracts\Modulos\TypeDocument\TypeDocumentRepositoryInterface;
+use App\Repositories\Contracts\Modulos\TypeMaintenance\TypeMaintenanceRepositoryInterface;
+use App\Repositories\Contracts\Modulos\TypeTeam\TypeTeamRepositoryInterface;
 use Illuminate\Http\Request;
 
 class MaintenanceController extends Controller
 {
+    protected $typeDocumentRepository;
+
+    protected $typeTeamRepository;
+
+    protected $referenceRepository;
+
+    protected $typeMaintenanceRepository;
+
+    public function __construct(
+        TypeDocumentRepositoryInterface $typeDocumentRepositoryInterface,
+        TypeTeamRepositoryInterface $typeTeamRepositoryInterface,
+        ReferenceRepositoryInterface $referenceRepositoryInterface,
+        TypeMaintenanceRepositoryInterface $typeMaintenanceRepositoryInterface
+    ) {
+        $this->typeDocumentRepository = $typeDocumentRepositoryInterface;
+        $this->typeTeamRepository = $typeTeamRepositoryInterface;
+        $this->referenceRepository = $referenceRepositoryInterface;
+        $this->typeMaintenanceRepository = $typeMaintenanceRepositoryInterface;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +37,12 @@ class MaintenanceController extends Controller
      */
     public function index()
     {
-        return view('maintenance.index');
+        $typeDocument = $this->typeDocumentRepository->getAll();
+        $typeTeam = $this->typeTeamRepository->getAll();
+        $reference = $this->referenceRepository->getAll();
+        $typeMaintenance = $this->typeMaintenanceRepository->getAll();
+        
+        return view('maintenance.index', compact('typeTeam', 'reference', 'typeDocument', 'typeMaintenance'));
     }
 
     /**
@@ -34,7 +63,7 @@ class MaintenanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
