@@ -37,6 +37,11 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\Modulos\TypeMaintenance\TypeMaintenanceRepositoryInterface',
             'App\Repositories\Modulos\TypeMaintenance\TypeMaintenanceRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\Contracts\Modulos\User\UserRepositoryInterface',
+            'App\Repositories\Modulos\User\UserRepository'
+        );
     }
 
     /**

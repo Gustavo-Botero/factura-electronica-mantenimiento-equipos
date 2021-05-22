@@ -13,7 +13,15 @@ class UseCaseServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            'App\UseCases\Contracts\Modulos\Maintenance\GetDataIndexMaintenanceInterface',
+            'App\UseCases\Modulos\Maintenance\GetDataIndexMaintenanceUseCase'
+        );
+
+        $this->app->bind(
+            'App\UseCases\Contracts\Modulos\Maintenance\CreateMaintenanceInterface',
+            'App\UseCases\Modulos\Maintenance\CreateMaintenanceUseCase'
+        );
     }
 
     /**

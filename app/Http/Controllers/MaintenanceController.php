@@ -2,32 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\Contracts\Modulos\Reference\ReferenceRepositoryInterface;
-use App\Repositories\Contracts\Modulos\TypeDocument\TypeDocumentRepositoryInterface;
-use App\Repositories\Contracts\Modulos\TypeMaintenance\TypeMaintenanceRepositoryInterface;
-use App\Repositories\Contracts\Modulos\TypeTeam\TypeTeamRepositoryInterface;
+use App\UseCases\Contracts\Modulos\Maintenance\CreateMaintenanceInterface;
+use App\UseCases\Contracts\Modulos\Maintenance\GetDataIndexMaintenanceInterface;
 use Illuminate\Http\Request;
 
 class MaintenanceController extends Controller
 {
-    protected $typeDocumentRepository;
+    protected $getDataIndexMaintenance;
 
-    protected $typeTeamRepository;
-
-    protected $referenceRepository;
-
-    protected $typeMaintenanceRepository;
+    protected $createMaintenance;
 
     public function __construct(
-        TypeDocumentRepositoryInterface $typeDocumentRepositoryInterface,
-        TypeTeamRepositoryInterface $typeTeamRepositoryInterface,
-        ReferenceRepositoryInterface $referenceRepositoryInterface,
-        TypeMaintenanceRepositoryInterface $typeMaintenanceRepositoryInterface
+        GetDataIndexMaintenanceInterface $getDataIndexMaintenanceInterface,
+        CreateMaintenanceInterface $createMaintenanceInterface
     ) {
-        $this->typeDocumentRepository = $typeDocumentRepositoryInterface;
-        $this->typeTeamRepository = $typeTeamRepositoryInterface;
-        $this->referenceRepository = $referenceRepositoryInterface;
-        $this->typeMaintenanceRepository = $typeMaintenanceRepositoryInterface;
+        $this->getDataIndexMaintenance = $getDataIndexMaintenanceInterface;
+        $this->createMaintenance = $createMaintenanceInterface;
     }
 
     /**
@@ -37,12 +27,7 @@ class MaintenanceController extends Controller
      */
     public function index()
     {
-        $typeDocument = $this->typeDocumentRepository->getAll();
-        $typeTeam = $this->typeTeamRepository->getAll();
-        $reference = $this->referenceRepository->getAll();
-        $typeMaintenance = $this->typeMaintenanceRepository->getAll();
-        
-        return view('maintenance.index', compact('typeTeam', 'reference', 'typeDocument', 'typeMaintenance'));
+        return view('maintenance.index', $this->getDataIndexMaintenance->handle());
     }
 
     /**
@@ -63,7 +48,7 @@ class MaintenanceController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        dd($this->createMaintenance->handle($request));
     }
 
     /**
