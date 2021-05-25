@@ -14,6 +14,7 @@ class TypeTeamModel extends Model
     protected $keyType = 'integer';
 
     protected $fillable = [
+        'id',
         'name',
     ];
 

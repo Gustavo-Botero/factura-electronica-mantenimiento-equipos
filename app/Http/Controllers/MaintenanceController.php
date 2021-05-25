@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MaintenanceModel;
+use App\Repositories\Contracts\Modulos\Maintenance\MaintenanceRepositoryInterface;
 use App\UseCases\Contracts\Modulos\Maintenance\CreateMaintenanceInterface;
 use App\UseCases\Contracts\Modulos\Maintenance\GetDataIndexMaintenanceInterface;
 use Illuminate\Http\Request;
@@ -12,12 +14,16 @@ class MaintenanceController extends Controller
 
     protected $createMaintenance;
 
+    protected $maintenanceRepository;
+
     public function __construct(
         GetDataIndexMaintenanceInterface $getDataIndexMaintenanceInterface,
-        CreateMaintenanceInterface $createMaintenanceInterface
+        CreateMaintenanceInterface $createMaintenanceInterface,
+        MaintenanceRepositoryInterface $maintenanceRepositoryInterface
     ) {
         $this->getDataIndexMaintenance = $getDataIndexMaintenanceInterface;
         $this->createMaintenance = $createMaintenanceInterface;
+        $this->maintenanceRepository = $maintenanceRepositoryInterface;
     }
 
     /**
@@ -27,7 +33,9 @@ class MaintenanceController extends Controller
      */
     public function index()
     {
-        return view('maintenance.index', $this->getDataIndexMaintenance->handle());
+        $data = $this->getDataIndexMaintenance->handle();
+        $mantenimientos = $this->maintenanceRepository->getAll();
+        return view('maintenance.index', compact('data', 'mantenimientos'));
     }
 
     /**
@@ -38,6 +46,11 @@ class MaintenanceController extends Controller
     public function create()
     {
         //
+    }
+
+    public function showDatatable()
+    {
+        return datatables()->collection($this->maintenanceRepository->getAllWithForeign())->toJson();
     }
 
     /**

@@ -30,7 +30,7 @@
                     <label for="typeDocument">Tipo de documento:</label>
                     <select class="form-control" name="typeDocument" id="typeDocument">
                         <option value="">--Seleccione--</option>
-                        @foreach ($typeDocument as $row)
+                        @foreach ($data['typeDocument'] as $row)
                             <option value=" {{$row->id}} "> {{$row->name}} </option>
                         @endforeach
                     </select>
@@ -55,7 +55,7 @@
                     <label for="typeTeam">Tipo de equipo:</label>
                     <select name="typeTeam" class="form-control" id="typeTeam">
                         <option value="">--Seleccione--</option>
-                        @foreach ($typeTeam as $row)
+                        @foreach ($data['typeTeam'] as $row)
                             <option value="{{$row->id}}">{{$row->name}}</option>
                             
                         @endforeach
@@ -66,7 +66,7 @@
                     <label for="reference">Referencia:</label>
                     <select name="reference" class="form-control" id="reference">
                         <option value="">--Seleccione--</option>
-                        @foreach ($reference as $row)
+                        @foreach ($data['reference'] as $row)
                             <option value="{{$row->id}}">{{$row->name}}</option>
                         @endforeach
                     </select>
@@ -76,7 +76,7 @@
                     <label for="typeMaintenance">Tipo de mantenimiento:</label>
                     <select name="typeMaintenance" class="form-control" id="typeMaintenance">
                         <option value="">--Seleccione--</option>
-                        @foreach($typeMaintenance as $row)
+                        @foreach($data['typeMaintenance'] as $row)
                             <option value=" {{$row->id}} "> {{$row->name}} </option>
                         @endforeach
                     </select>
@@ -93,6 +93,38 @@
                 <button type="submit" class="btn btn-success">Guardar</button>
             </div>
         </form>
+    </div>
+    <div class="col-12 card-body">
+        <table class="myTable table table-bordered table-hover" data-route=" {{route('mantenimiento.showTable')}} ">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Numero de telefono</th>
+                    <th>Dirección</th>
+                    <th>referencia</th>
+                    <th>Tipo de equipo</th>
+                    <th>Tipo de mantenimiento</th>
+                    <th>Descripción</th>
+                </tr> 
+            </thead>
+            {{-- <tbody>
+                @foreach ($mantenimientos as $row)
+                    <tr>
+                        <td> {{$row->id}} </td>
+                        <td> {{$row->user->first_name}} </td>
+                        <td> {{$row->user->last_name}} </td>
+                        <td> {{$row->user->num_phone}} </td>
+                        <td> {{$row->user->address}} </td>
+                        <td> {{$row->reference->name}} </td>
+                        <td> {{$row->typeTeam->name}} </td>
+                        <td> {{$row->typeMaintenance->name}} </td>
+                        <td> {{$row->description}} </td>
+                    </tr>    
+                @endforeach
+            </tbody> --}}
+        </table>
     </div>
      
 @endsection

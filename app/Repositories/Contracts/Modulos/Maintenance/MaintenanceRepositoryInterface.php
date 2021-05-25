@@ -10,4 +10,6 @@ interface MaintenanceRepositoryInterface
     public function getAll(): Collection;
 
     public function create(Request $request, int $userId) : int;
+
+    public function getAllWithForeign();
 }

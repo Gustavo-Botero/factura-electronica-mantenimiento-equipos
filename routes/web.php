@@ -19,3 +19,8 @@ Route::get('/', function () {
 })->name('inicio');
 
 Route::resource('mantenimiento', MaintenanceController::class);
+
+Route::post(
+    'mantenimiento/showTable',
+    [MaintenanceController::class, 'showDatatable']
+)->name('mantenimiento.showTable');
