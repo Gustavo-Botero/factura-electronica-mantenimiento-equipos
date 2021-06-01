@@ -7,13 +7,13 @@
 @section('content')
     <div class="col-12">
         <!-- form start -->
-        <form action=" {{route('mantenimiento.store')}} " method="POST">
+        <form action=" {{route('mantenimiento.store')}} " method="POST" id="maintenance">
             @csrf
             <div class="card-body row">
 
                 <div class="form-group col-6">
-                    <label for="fistName">Nombres:</label>
-                    <input type="text" class="form-control" name="fistName" id="fistName" placeholder="Pepito">
+                    <label for="firstName">Nombres:</label>
+                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Pepito">
                 </div>
 
                 <div class="form-group col-6">
@@ -88,42 +88,28 @@
                 </div>
 
             </div>
-            <!-- /.card-body -->
+                <!-- /.card-body -->
             <div class="card-footer">
                 <button type="submit" class="btn btn-success">Guardar</button>
             </div>
-        </form>
+        </form>        
     </div>
     <div class="col-12 card-body">
-        <table class="myTable table table-bordered table-hover" data-route=" {{route('mantenimiento.showTable')}} ">
+        <table class="dataTable table table-bordered table-hover" data-route=" {{route('mantenimiento.showTable')}} ">
             <thead>
-                <tr>
-                    <th>id</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Numero de telefono</th>
-                    <th>Dirección</th>
-                    <th>referencia</th>
-                    <th>Tipo de equipo</th>
-                    <th>Tipo de mantenimiento</th>
-                    <th>Descripción</th>
+                <tr class="columns">
+                    <th data-name="maintId">Acción</th>
+                    <th data-name="maintId">Id</th>
+                    <th data-name="nombres">Nombres</th>
+                    <th data-name="apellidos">Apellidos</th>
+                    <th data-name="numeroTelefono">Numero de telefono</th>
+                    <th data-name="direccion">Dirección</th>
+                    <th data-name="referencia">referencia</th>
+                    <th data-name="tipoEquipo">Tipo de equipo</th>
+                    <th data-name="tipoMantenimiento">Tipo de mantenimiento</th>
+                    <th data-name="descripcion">Descripción</th>
                 </tr> 
             </thead>
-            {{-- <tbody>
-                @foreach ($mantenimientos as $row)
-                    <tr>
-                        <td> {{$row->id}} </td>
-                        <td> {{$row->user->first_name}} </td>
-                        <td> {{$row->user->last_name}} </td>
-                        <td> {{$row->user->num_phone}} </td>
-                        <td> {{$row->user->address}} </td>
-                        <td> {{$row->reference->name}} </td>
-                        <td> {{$row->typeTeam->name}} </td>
-                        <td> {{$row->typeMaintenance->name}} </td>
-                        <td> {{$row->description}} </td>
-                    </tr>    
-                @endforeach
-            </tbody> --}}
         </table>
     </div>
      
