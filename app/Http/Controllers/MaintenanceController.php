@@ -61,7 +61,7 @@ class MaintenanceController extends Controller
      */
     public function store(Request $request)
     {
-        dd($this->createMaintenance->handle($request));
+        return  $this->createMaintenance->handle($request->data);
     }
 
     /**

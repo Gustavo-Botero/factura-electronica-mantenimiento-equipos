@@ -17,17 +17,23 @@ class UserRepository implements UserRepositoryInterface
 
 
 
-    public function create(Request $request): int
-    {
+    public function create(array $request): int
+    {   
+        if(isset($request['password'])) {
+            $password = $request['password'];
+        }else {
+            $password = null;
+        }
+
         $user = new $this->user;
-        $user->first_name = $request->fistName;
-        $user->last_name = $request->lastName;
-        $user->email = $request->email;
-        $user->type_document_id = $request->typeDocument;
-        $user->num_document = $request->numDocument;
-        $user->password = $request->password ? $request->password : null;
-        $user->num_phone = $request->numPhone;
-        $user->address = $request->address;
+        $user->first_name = $request['firstName'];
+        $user->last_name = $request['lastName'];
+        $user->email = $request['email'];
+        $user->type_document_id = $request['typeDocument'];
+        $user->num_document = $request['numDocument'];
+        $user->password = $password;
+        $user->num_phone = $request['numPhone'];
+        $user->address = $request['address'];
 
         $user->save();
 

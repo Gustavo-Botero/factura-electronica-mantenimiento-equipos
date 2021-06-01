@@ -16,7 +16,10 @@
 
     <script>
         window.laravel = {!!
-            json_encode(['token' => csrf_token()])    
+            json_encode([
+                'url' => URL::to('/'),
+                'token' => csrf_token()
+            ])    
         !!}
     </script>
 

@@ -20,3 +20,4 @@
 <script src=" {{asset('AdminLTE/js/demo.js')}} "></script>
 
 <script src=" {{asset('js/dataTable.js')}} "></script>
+<script src="{{asset('js/funciones.js')}}" ></script>

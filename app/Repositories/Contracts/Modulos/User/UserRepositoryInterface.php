@@ -6,5 +6,5 @@ use Illuminate\Http\Request;
 
 interface UserRepositoryInterface
 {
-    public function create(Request $request): int;
+    public function create(array $request): int;
 }

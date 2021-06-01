@@ -22,15 +22,15 @@ class MaintenanceRepository implements MaintenanceRepositoryInterface
         return $this->maintenance->all();
     }
 
-    public function create(Request $request, int $userId): int
+    public function create(array $request, int $userId): int
     {
         $maintenance = new $this->maintenance;
 
         $maintenance->user_id = $userId;
-        $maintenance->reference_id = $request->reference;
-        $maintenance->type_team_id = $request->typeTeam;
-        $maintenance->type_maintenance_id = $request->typeMaintenance;
-        $maintenance->description = $request->description;
+        $maintenance->reference_id = $request['reference'];
+        $maintenance->type_team_id = $request['typeTeam'];
+        $maintenance->type_maintenance_id = $request['typeMaintenance'];
+        $maintenance->description = $request['description'];
 
         $maintenance->save();
 

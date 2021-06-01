@@ -6,5 +6,5 @@ use Illuminate\Http\Request;
 
 interface CreateMaintenanceInterface
 {
-    public function handle(Request $request);
+    public function handle(array $request);
 }

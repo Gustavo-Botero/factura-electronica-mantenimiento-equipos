@@ -22,11 +22,11 @@ class CreateMaintenanceUseCase implements CreateMaintenanceInterface
     }
 
 
-    public function handle(Request $request)
+    public function handle(array $request)
     {
         $userId = $this->userRepository->create($request);
         $maintenance = $this->maintenanceRepository->create($request, $userId);
 
-        return $maintenance;
+        return ['salida' => true];
     }
 }
