@@ -27,6 +27,12 @@ class CreateMaintenanceUseCase implements CreateMaintenanceInterface
         $userId = $this->userRepository->create($request);
         $maintenance = $this->maintenanceRepository->create($request, $userId);
 
-        return ['salida' => true];
+        return [
+            'alert' => true,
+            'icon' => 'success',
+            'title' => 'Registro guardado exitosamente',
+            'load' => true,
+            'limpForm' => ['limpiar' => true, 'idForm' => 'maintenance']
+        ];
     }
 }

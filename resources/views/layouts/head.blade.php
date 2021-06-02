@@ -11,6 +11,8 @@
     <link rel="stylesheet" href=" {{asset('AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href=" {{asset('AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
     <link rel="stylesheet" href=" {{asset('AdminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+    <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="{{asset('AdminLTE/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href=" {{asset('AdminLTE/css/adminlte.min.css')}}">
 

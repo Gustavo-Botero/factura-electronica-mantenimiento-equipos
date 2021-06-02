@@ -14,6 +14,8 @@
 <script src="{{asset('AdminLTE/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('AdminLTE/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('AdminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+<!-- SweetAlert2 -->
+<script src="{{asset('AdminLTE/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src=" {{asset('AdminLTE/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->

@@ -1,14 +1,12 @@
 function sendAjax(idForm) {
     let valImput = {};
 
+    // Capturando los name de los imput para enviarlos al controlador
     $('#' + idForm + ' label').each(function (index, value) {
         let label = $(this).attr('for');
-        item = [];
         valImput[label] = $('#' + label).val();
-        // console.log(valImput);
-        // valImput.push(item);
     });
-    
+
     $.ajax({
         type: 'POST',
         url: $('#' + idForm).attr('action'),
@@ -17,15 +15,41 @@ function sendAjax(idForm) {
             _token: window.laravel.token
         },
         success: function (response) {
-            console.log(response);
             outAjax(response);
         }
     });
-
-    console.log(valImput);
-    console.log($('#' + idForm).attr('action'));
 }
 
 function outAjax(obj) {
-    console.log(obj);
+    // Salida el alert generico
+    if (obj.alert) {
+        alertGenerico(obj);
+    }
+
+    // Limpiar el formulario cuando guarda los datos
+    if (obj.limpForm['limpiar']) {
+        limpiarForm(obj.limpForm['idForm']);
+    }
+
+    $('.dataTable').DataTable().ajax.reload();
+}
+
+function limpiarForm(idForm) {
+    // Resetear todo el formulario
+    $('#'+ idForm)[0].reset();
+}
+
+function alertGenerico(obj) {
+    // Alert generico
+    var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
+    });
+
+    Toast.fire({
+        icon: obj.icon,
+        title: obj.title
+    })
 }

@@ -88,11 +88,11 @@
                 </div>
 
             </div>
-                <!-- /.card-body -->
-            <div class="card-footer">
-                <button type="submit" class="btn btn-success">Guardar</button>
-            </div>
-        </form>        
+        </form>   
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <button onclick="sendAjax('maintenance')" class="btn btn-success">Guardar</button>
+        </div>     
     </div>
     <div class="col-12 card-body">
         <table class="dataTable table table-bordered table-hover" data-route=" {{route('mantenimiento.showTable')}} ">
