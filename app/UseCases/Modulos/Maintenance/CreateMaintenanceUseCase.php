@@ -5,7 +5,6 @@ namespace App\UseCases\Modulos\Maintenance;
 use App\Repositories\Contracts\Modulos\Maintenance\MaintenanceRepositoryInterface;
 use App\Repositories\Contracts\Modulos\User\UserRepositoryInterface;
 use App\UseCases\Contracts\Modulos\Maintenance\CreateMaintenanceInterface;
-use Illuminate\Http\Request;
 
 class CreateMaintenanceUseCase implements CreateMaintenanceInterface
 {
@@ -24,7 +23,14 @@ class CreateMaintenanceUseCase implements CreateMaintenanceInterface
 
     public function handle(array $request)
     {
-        $userId = $this->userRepository->create($request);
+        $user = $this->userRepository->getByDocument($request['numDocument']);
+
+        if (isset($user)){
+            $userId = $user[0]['id'];
+        } else {
+            $userId = $this->userRepository->create($request);
+        }
+
         $maintenance = $this->maintenanceRepository->create($request, $userId);
 
         return [

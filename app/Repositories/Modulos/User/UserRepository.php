@@ -4,8 +4,6 @@ namespace App\Repositories\Modulos\User;
 
 use App\Models\User;
 use App\Repositories\Contracts\Modulos\User\UserRepositoryInterface;
-use Illuminate\Http\Request;
-
 class UserRepository implements UserRepositoryInterface
 {
     protected $user;
@@ -38,5 +36,10 @@ class UserRepository implements UserRepositoryInterface
         $user->save();
 
         return $user->id;
+    }
+
+    public function getByDocument(int $numDocument) : array
+    {
+        return $this->user->where('num_document', $numDocument)->select('id')->get()->toArray();
     }
 }
