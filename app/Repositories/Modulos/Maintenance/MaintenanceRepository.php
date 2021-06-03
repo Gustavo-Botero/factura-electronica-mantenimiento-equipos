@@ -60,4 +60,11 @@ class MaintenanceRepository implements MaintenanceRepositoryInterface
 
             )->get();
     }
+
+    public function delete(int $id): bool
+    {
+        $maintenance = $this->maintenance->find($id);
+
+        return $maintenance->delete();
+    }
 }

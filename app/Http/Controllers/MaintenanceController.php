@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MaintenanceModel;
 use App\Repositories\Contracts\Modulos\Maintenance\MaintenanceRepositoryInterface;
 use App\UseCases\Contracts\Modulos\Maintenance\CreateMaintenanceInterface;
 use App\UseCases\Contracts\Modulos\Maintenance\GetDataIndexMaintenanceInterface;
@@ -104,8 +103,16 @@ class MaintenanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
-        //
+        $this->maintenanceRepository->delete($id);
+
+        return [
+            'alert' => true,
+            'icon' => 'warning',
+            'title' => 'Se elimino el registro correctamente',
+            'limpForm' => ['limpiar' => false],
+            'load' => true
+        ];
     }
 }

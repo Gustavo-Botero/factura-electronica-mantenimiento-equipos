@@ -20,6 +20,39 @@ function sendAjax(idForm) {
     });
 }
 
+function destroy(route, id){
+    bootbox.confirm({
+        message: 'Esta seguro que desea eliminar este registro?',
+        buttons: {
+            confirm: {
+                label: 'Sí',
+                className: 'btn-danger'
+            },
+            cancel: {
+                label: 'No',
+                className: 'btn-info'
+            }
+        },
+        callback:function(res){
+            console.log(res);
+            if (res) {
+                $.ajax({
+                    type: "POST",
+                    url: window.laravel.url+'/'+route+'/'+id,
+                    data: {
+                        _token: window.laravel.token,
+                        _method: 'DELETE'
+                    },
+                    success: function (result) {
+                      outAjax(result)  ;
+                    }
+                });
+            }
+        }
+    });
+
+}
+
 function outAjax(obj) {
     // Salida el alert generico
     if (obj.alert) {
@@ -31,7 +64,9 @@ function outAjax(obj) {
         limpiarForm(obj.limpForm['idForm']);
     }
 
-    $('.dataTable').DataTable().ajax.reload();
+    if (obj.load) {
+        $('.dataTable').DataTable().ajax.reload();
+    }
 }
 
 function limpiarForm(idForm) {

@@ -25,7 +25,7 @@ class CreateMaintenanceUseCase implements CreateMaintenanceInterface
     {
         $user = $this->userRepository->getByDocument($request['numDocument']);
 
-        if (isset($user)){
+        if (!empty($user)){
             $userId = $user[0]['id'];
         } else {
             $userId = $this->userRepository->create($request);

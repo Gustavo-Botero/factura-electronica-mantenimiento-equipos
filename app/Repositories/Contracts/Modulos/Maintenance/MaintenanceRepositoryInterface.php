@@ -12,4 +12,6 @@ interface MaintenanceRepositoryInterface
     public function create(array $request, int $userId) : int;
 
     public function getAllWithForeign();
+
+    public function delete(int $id): bool;
 }

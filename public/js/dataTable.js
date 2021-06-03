@@ -1,5 +1,6 @@
 $(function () {
     let jsonColumns = [];
+    let routeDelete = $('.dataTable').data('delete');
     $('.dataTable .columns').find('th').each(function (index, value) { 
          data = $(value).data('name');
 
@@ -24,7 +25,7 @@ $(function () {
                 targets: 0,
                 orderable: false,
                 createdCell: function(td, cellData, rowData, row, col) {
-                    let html = `<button class="btn btn-outline-danger" data-delete="`+cellData+`">
+                    let html = `<button class="btn btn-outline-danger" onclick="destroy('`+ routeDelete +`','`+ cellData +`')">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>`;
 

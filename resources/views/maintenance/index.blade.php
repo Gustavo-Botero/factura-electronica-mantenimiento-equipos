@@ -95,7 +95,9 @@
         </div>     
     </div>
     <div class="col-12 card-body">
-        <table class="dataTable table table-bordered table-hover" data-route=" {{route('mantenimiento.showTable')}} ">
+        <table class="dataTable table table-bordered table-hover" 
+                data-route=" {{route('mantenimiento.showTable')}}"
+                data-delete="mantenimiento">
             <thead>
                 <tr class="columns">
                     <th data-name="maintId">Acción</th>

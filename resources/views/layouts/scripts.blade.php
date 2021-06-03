@@ -20,6 +20,8 @@
 <script src=" {{asset('AdminLTE/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src=" {{asset('AdminLTE/js/demo.js')}} "></script>
+<!-- Bootbox -->
+<script src=" {{asset('AdminLTE/js/bootbox.js')}} "></script>
 
 <script src=" {{asset('js/dataTable.js')}} "></script>
 <script src="{{asset('js/funciones.js')}}" ></script>
